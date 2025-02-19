@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Глобальный чат</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .chat-container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        #messages {
+            height: 300px;
+            overflow-y: auto;
+            text-align: left;
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .input-box {
+            margin-top: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        input {
+            flex-grow: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            outline: none;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            background: #fff;
+            color: #2575fc;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        button:hover {
+            background: #ddd;
+        }
+        .home-button {
+            margin-top: 20px;
+        }
+        .home-button a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .home-button a:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <h2>Глобальный чат</h2>
+        <div id="messages"></div>
+        <div class="input-box">
+            <input type="text" id="messageInput" placeholder="Введите сообщение...">
+            <button onclick="sendMessage()">Отправить</button>
+        </div>
+        <div class="home-button">
+            <a href="index.html">На главную</a>
+        </div>
+    </div>
+
+    <script>
+        const socket = new WebSocket('ws://localhost:3000');
+
+        socket.onmessage = event => {
+            const data = JSON.parse(event.data);
+
+            if (data.type === 'history') {
+                data.messages.forEach(msg => addMessage(msg.name, msg.text));
+            } else if (data.type === 'message') {
+                addMessage(data.name, data.text);
+            }
+        };
+
+        function sendMessage() {
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            if (message) {
+                const data = { type: 'message', name: 'Аноним', text: message };
+                socket.send(JSON.stringify(data));
+                input.value = '';
+            }
+        }
+
+        function addMessage(name, text) {
+            const messagesDiv = document.getElementById('messages');
+            const msg = document.createElement('p');
+            msg.innerHTML = `<strong>${name}:</strong> ${text}`;
+            messagesDiv.appendChild(msg);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+    </script>
+</body>
+</html>

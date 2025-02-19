@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Техническая поддержка</title>
+    <link rel="icon" type="assets/png" href="assets/icon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #6a11cb, #2575fc);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 80%;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .contact {
+            margin-top: 30px;
+        }
+        .contact a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .contact a:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .form-container {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: #6a11cb;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2575fc;
+        }
+    </style>
+</head>
+<body>
+    <header>Техническая поддержка</header>
+    <div class="container">
+        <h2>Нужна помощь? Свяжитесь с нами!</h2>
+        <p>Опишите вашу проблему, и мы постараемся вам помочь как можно скорее.</p>
+        <div class="form-container">
+            <h3>Отправить запрос в поддержку</h3>
+            <form onsubmit="return openTelegram(event)">
+                <input type="text" id="name" placeholder="Ваше имя" required>
+                <input type="email" id="email" placeholder="Ваш Email" required>
+                <textarea id="message" placeholder="Опишите вашу проблему" rows="4" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+        <div class="contact">
+            <h3>Альтернативные способы связи</h3>
+            <p>Email: <a href="mailto:gansta252552525@gmail.com">gansta252552525@gmail.com</a></p>
+            <p>Telegram: <a href="https://t.me/Tershons" target="_blank">@Tershons</a></p>
+        </div>
+    </div>
+    <script>
+        function openTelegram(event) {
+            event.preventDefault();
+            let name = encodeURIComponent(document.getElementById('name').value);
+            let email = encodeURIComponent(document.getElementById('email').value);
+            let message = encodeURIComponent(document.getElementById('message').value);
+            let telegramMessage = `Здравствуйте!%0AИмя: ${name}%0AEmail: ${email}%0AСообщение: ${message}`;
+            let telegramLink = `https://t.me/Tershons?text=${telegramMessage}`;
+            window.open(telegramLink, "_blank");
+        }
+    </script>
+</body>
+</html>

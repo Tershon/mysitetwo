@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги</title>
+    <link rel="icon" type="assets/png" href="assets/icon.png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #fff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .home-btn {
+            background: #ff7e5f;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+        .home-btn:hover {
+            background: #feb47b;
+        }
+        .container {
+            max-width: 80%;
+            margin: 30px auto;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+        th {
+            background: rgba(0, 0, 0, 0.5);
+            font-size: 20px;
+        }
+        td {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        .contact {
+            margin-top: 30px;
+        }
+        .contact a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            background: rgba(255, 255, 255, 0.3);
+            padding: 10px 15px;
+            border-radius: 5px;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .contact a:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+        .form-container {
+            margin-top: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+        }
+        input, select, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: none;
+        }
+        button {
+            background: #ff7e5f;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #feb47b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span>Наши услуги</span>
+        <a href="index.html" class="home-btn">На главную</a>
+    </header>
+    <div class="container">
+        <h2>Мы предлагаем</h2>
+        <table>
+            <tr>
+                <th>Название услуги</th>
+                <th>Описание</th>
+                <th>Цена</th>
+            </tr>
+            <tr>
+                <td>Грамотное Резюме</td>
+                <td>Помощь в создании профессионального резюме</td>
+                <td>от 5 000₽</td>
+            </tr>
+            <tr>
+                <td>Портфолио</td>
+                <td>Создание красивого и информативного портфолио</td>
+                <td>от 7 000₽</td>
+            </tr>
+            <tr>
+                <td>Маркетинг</td>
+                <td>Разработка маркетинговых стратегий</td>
+                <td>от 10 000₽</td>
+            </tr>
+        </table>
+        <div class="contact">
+            <h3>Свяжитесь с нами</h3>
+            <p>Email: <a href="mailto:gansta252552525@gmail.com">gansta252552525@gmail.com</a></p>
+            <p>Telegram: <a href="https://t.me/Tershons" target="_blank">@Tershons</a></p>
+        </div>
+        <div class="form-container">
+            <h3>Оставить заявку</h3>
+            <form onsubmit="return openTelegram(event)">
+                <input type="text" id="name" placeholder="Ваше имя" required>
+                <input type="email" id="email" placeholder="Ваш Email" required>
+                <select id="service" required>
+                    <option value="">Выберите услугу</option>
+                    <option value="Грамотное Резюме">Грамотное Резюме</option>
+                    <option value="Портфолио">Портфолио</option>
+                 

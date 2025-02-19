@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Резюме</title>
+    <link rel="icon" type="assets/png" href="assets/icon.png">
+    <link rel="stylesheet" href="onestyle.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Резюме</h1>
+        <form id="resumeForm">
+            <label for="photo">Фото:</label>
+            <input type="file" id="photo" accept="image/*">
+
+            <label for="name">ФИО:</label>
+            <input type="text" id="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+
+            <label for="phone">Телефон:</label>
+            <input type="text" id="phone" required>
+
+            <label for="address">Адрес:</label>
+            <input type="text" id="address" required>
+
+            <label for="birthdate">Дата рождения:</label>
+            <input type="date" id="birthdate" required>
+
+            <label for="about">О себе:</label>
+            <textarea id="about" required></textarea>
+
+            <label for="education">Образование:</label>
+            <textarea id="education" required></textarea>
+
+            <label for="skills">Навыки:</label>
+            <textarea id="skills" required></textarea>
+
+            <label for="experience">Опыт работы:</label>
+            <textarea id="experience" required></textarea>
+
+            <label for="certificates">Сертификаты:</label>
+            <textarea id="certificates"></textarea>
+
+            <label for="languages">Языки:</label>
+            <input type="text" id="languages" required>
+
+            <label for="hobbies">Хобби:</label>
+            <input type="text" id="hobbies">
+
+            <label for="linkedin">LinkedIn:</label>
+            <input type="url" id="linkedin">
+
+            <button type="submit">Создать резюме</button>
+        </form>
+
+        <div id="resumeOutput" class="resume hidden">
+            <img id="outputPhoto" class="photo hidden" alt="Фото">
+            <h2 id="outputName"></h2>
+            <p><strong>Email:</strong> <span id="outputEmail"></span></p>
+            <p><strong>Телефон:</strong> <span id="outputPhone"></span></p>
+            <p><strong>Адрес:</strong> <span id="outputAddress"></span></p>
+            <p><strong>Дата рождения:</strong> <span id="outputBirthdate"></span></p>
+            <h3>О себе</h3>
+            <p id="outputAbout"></p>
+            <h3>Образование</h3>
+            <p id="outputEducation"></p>
+            <h3>Навыки</h3>
+            <p id="outputSkills"></p>
+            <h3>Опыт работы</h3>
+            <p id="outputExperience"></p>
+            <h3>Сертификаты</h3>
+            <p id="outputCertificates"></p>
+            <p><strong>Языки:</strong> <span id="outputLanguages"></span></p>
+            <p><strong>Хобби:</strong> <span id="outputHobbies"></span></p>
+            <p><strong>LinkedIn:</strong> <a href="#" id="outputLinkedin" target="_blank"></a></p>
+            <button id="downloadBtn">Скачать резюме (PDF)</button>
+           
+            
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
